@@ -1,0 +1,66 @@
+﻿@model MVCRegistrationform.Login
+
+@{
+    ViewBag.Title = "ViewLoginDetails";
+}
+
+<h2>ViewLoginDetails</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @*<table border="1" cellpadding="10">
+        <tr>
+            <td>ID :</td>
+            <td>@Html.EditorFor(m => m.ID)</td>
+        </tr>
+        <tr>
+            <td>User Name :</td>
+            <td>@Html.EditorFor(m => m.UserName)</td>
+        </tr>
+        <tr>
+            <td>Password :</td>
+            <td>@Html.EditorFor(m => m.Password)</td>
+        </tr>
+        <tr>
+            <td>First Name :</td>
+            <td>@Html.EditorFor(m => m.FirstName)</td>
+        </tr>
+        <tr>
+            <td>Last Name :</td>
+            <td>@Html.EditorFor(m => m.LastName)</td>
+        </tr>
+
+    </table>*@
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>ID :</td>
+            <td>@Html.DisplayFor(m => m.ID)</td>
+        </tr>
+        <tr>
+            <td>User Name :</td>
+            <td>@Html.DisplayFor(m => m.UserName)</td>
+        </tr>
+        <tr>
+            <td>Password :</td>
+            <td>@Html.DisplayFor(m => m.Password)</td>
+        </tr>
+        <tr>
+            <td>First Name :</td>
+            <td>@Html.DisplayFor(m => m.FirstName)</td>
+        </tr>
+        <tr>
+            <td>Last Name :</td>
+            <td>@Html.DisplayFor(m => m.LastName)</td>
+        </tr>
+
+    </table>
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayForModel()
+               @* @Html.EditorForModel(new { PreviousYearCount = 10, NextYearCount = 10 })*@
+            </td>
+        </tr>
+    </table>
+}

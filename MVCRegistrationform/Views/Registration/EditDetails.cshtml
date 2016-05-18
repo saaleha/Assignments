@@ -1,0 +1,52 @@
+﻿@model MVCRegistrationform.RegistrationDetail
+
+@{
+    ViewBag.Title = "EditDetails";
+}
+<link href="~/StyleSheet/TableStyle.css" rel="stylesheet" />
+
+<h2 class="divalign">EditDetails</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset class="form-horizontal">
+        <legend>Edit Details</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="divalign">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <br />
+
+        <div class="divalign">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <br />
+
+        <div class="divalign">
+            @Html.LabelFor(model => model.Phone)
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+        <br />
+
+        <div class="divalign">
+            @Html.LabelFor(model => model.Address)
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        <br />
+        <div class="divalign">
+        <input type="submit" value="Save"/>
+
+        </div>
+        
+        <br />
+        
+    </fieldset>
+}

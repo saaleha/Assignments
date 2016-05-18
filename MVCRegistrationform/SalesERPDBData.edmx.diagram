@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5515bdbcc9c14e8cbe34f95e5e63eca0" Name="Diagram1" ZoomLevel="163">
+        <EntityTypeShape EntityType="SalesERPDBModel.RegistrationDetail" Width="1.5" PointX="1.3780749427983887" PointY="9.8467754469470936" />
+        <EntityTypeShape EntityType="SalesERPDBModel.Login" Width="1.5" PointX="3.0388261503720777" PointY="14.74593955965058" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
