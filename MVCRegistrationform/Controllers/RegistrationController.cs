@@ -56,7 +56,7 @@ namespace MVCRegistrationform.Controllers
             //ViewBag.UserDetails = Data;
             return View(SalesERPContext);
         }
-
+        
         public ActionResult DeleteDetails(int id)
         {
             var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.ID == id select s1).FirstOrDefault();
