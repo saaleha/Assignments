@@ -150,6 +150,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Content\WebApiConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Filters\DebugFilterAttribute.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
