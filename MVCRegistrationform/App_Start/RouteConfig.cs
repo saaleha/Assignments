@@ -15,11 +15,15 @@ namespace MVCRegistrationform
 
             routes.IgnoreRoute("elmah.axd");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Registration", action = "Login", id = UrlParameter.Optional }
             );
+
+            
         }
     }
 }

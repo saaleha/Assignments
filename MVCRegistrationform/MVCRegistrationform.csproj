@@ -150,18 +150,30 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Content\WebApiConfig.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Filters\DebugFilterAttribute.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CustomeStaticHelpers.cs" />
+    <Compile Include="Helpers\LabelExtensions.cs" />
     <Compile Include="Login.cs">
       <DependentUpon>SalesERPDBData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605210318280_InitialCreate.cs" />
+    <Compile Include="Migrations\201605210318280_InitialCreate.Designer.cs">
+      <DependentUpon>201605210318280_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AjaxDetails.cs" />
+    <Compile Include="Models\DbConnectionCodeFirst.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegModel.cs" />
+    <Compile Include="Models\RoutingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationDetail.cs">
       <DependentUpon>SalesERPDBData.tt</DependentUpon>
@@ -181,6 +193,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesERPDBData.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AjaxLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\accordion.css" />
@@ -275,6 +288,12 @@
     <Content Include="Views\Registration\EditDetails.cshtml" />
     <Content Include="Views\Registration\Login.cshtml" />
     <Content Include="Views\Registration\ViewLoginDetails.cshtml" />
+    <Content Include="Views\Employee\AttributeRoutingSample.cshtml" />
+    <Content Include="Views\Employee\MultipleActionResult.cshtml" />
+    <Content Include="Views\Employee\ExtensionHelper.cshtml" />
+    <Content Include="Views\Student\AjaxHelper.cshtml" />
+    <Content Include="Views\Employee\AjaxHelper.cshtml" />
+    <Content Include="Views\Shared\Partial1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -284,6 +303,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605210318280_InitialCreate.resx">
+      <DependentUpon>201605210318280_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

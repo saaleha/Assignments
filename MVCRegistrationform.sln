@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCRegistrationform", "MVCRegistrationform\MVCRegistrationform.csproj", "{48CB10A5-6963-4831-B510-52CE2462C6FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCRegistrationFormTest.Tests", "MVCRegistrationFormTest.Tests\MVCRegistrationFormTest.Tests.csproj", "{3F535E31-A5F5-4C80-8B82-67BC353FDD00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{48CB10A5-6963-4831-B510-52CE2462C6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48CB10A5-6963-4831-B510-52CE2462C6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48CB10A5-6963-4831-B510-52CE2462C6FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F535E31-A5F5-4C80-8B82-67BC353FDD00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F535E31-A5F5-4C80-8B82-67BC353FDD00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F535E31-A5F5-4C80-8B82-67BC353FDD00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F535E31-A5F5-4C80-8B82-67BC353FDD00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

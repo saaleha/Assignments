@@ -12,6 +12,7 @@ using System.Web.Security;
 namespace MVCRegistrationform.Controllers
 {
     [ExceptionAttribute]
+    [RoutePrefix("Registration")]
     public class RegistrationController : Controller
     {
         private SalesERPDBEntities SalesERPContext;
