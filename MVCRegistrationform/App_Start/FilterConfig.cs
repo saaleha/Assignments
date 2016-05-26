@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using MVCRegistrationform.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MVCRegistrationform
@@ -9,6 +10,7 @@ namespace MVCRegistrationform
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute());
+            filters.Add(new ExceptionAttribute());
         }
     }
 }

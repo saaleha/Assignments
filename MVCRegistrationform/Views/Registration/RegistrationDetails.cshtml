@@ -1,4 +1,4 @@
-﻿@model MVCRegistrationform.SalesERPDBEntities
+﻿@model MVCRegistrationform.RegistrationDetail
 
 @{
     ViewBag.Title = "RegistrationDetails";
@@ -15,7 +15,7 @@
             <th>Delete</th>
             <th>Edit</th>
         </tr>
-        @foreach (var item in Model.RegistrationDetails)
+        @foreach (var item in Model)
         {
          <tr>
             <td>@item.Name</td>

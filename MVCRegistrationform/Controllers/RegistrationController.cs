@@ -15,11 +15,11 @@ namespace MVCRegistrationform.Controllers
     [RoutePrefix("Registration")]
     public class RegistrationController : Controller
     {
-        private SalesERPDBEntities SalesERPContext;
+        private SalesERPContext SalesERPContext;
 
         public RegistrationController()
         {
-            this.SalesERPContext = new SalesERPDBEntities();
+            this.SalesERPContext = new SalesERPContext();
         }
         //
         // GET: /Registration/
@@ -31,7 +31,7 @@ namespace MVCRegistrationform.Controllers
         [HttpGet]
         public ActionResult RegistrationForm()
         {
-            return View();
+            return View("RegistrationForm");
         }
 
         [HttpPost]
@@ -48,32 +48,31 @@ namespace MVCRegistrationform.Controllers
             SalesERPContext.SaveChanges();
             return RedirectToAction("RegistrationDetails");
         }
-        [DebugFilterAttribute]
+       // [DebugFilterAttribute]
         public ActionResult RegistrationDetails()
         {
 
             // Logic to display the entire list of objects pulled from database through entity framework. 
-            //var Data = SalesERPContext.RegistrationDetails.ToList();
-            //ViewBag.UserDetails = Data;
-            return View(SalesERPContext);
+             var Data = SalesERPContext.RegistrationDetails.ToList();
+             //ViewBag.UserDetails = Data;
+             return View(SalesERPContext);
         }
         
         public ActionResult DeleteDetails(int id)
         {
-            var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.ID == id select s1).FirstOrDefault();
-            SalesERPContext.RegistrationDetails.Remove(DeleteDetails);
-            SalesERPContext.SaveChanges();
+            //var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.ID == id select s1).FirstOrDefault();
+            //SalesERPContext.RegistrationDetails.Remove(DeleteDetails);
+            //SalesERPContext.SaveChanges();
             return RedirectToAction("RegistrationDetails");
 
         }
         public ActionResult EditDetails(int id)
         {
-            var std = SalesERPContext.RegistrationDetails.Find(id);
-
-            return View(std);
+            //var std = SalesERPContext.RegistrationDetails.Find(id);
+            var std = 1;
+            return View("EditDetails", std);
         }
         [HttpPost]
-
         public ActionResult EditDetails(int id, RegistrationDetail details)
         {
             if (!ModelState.IsValid)

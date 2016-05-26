@@ -26,7 +26,6 @@ namespace MVCRegistrationform.Models
 
         [Required(ErrorMessage = "Please Entire Address")]
         public string Address { get; set; }
-
        
     }
 }
