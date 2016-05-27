@@ -10,6 +10,7 @@
 // TargetFrameworkVersion = 4.51
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.Collections.Generic;
 namespace MVCRegistrationform
 {
 
@@ -22,6 +23,7 @@ namespace MVCRegistrationform
         public string Phone { get; set; } // Phone (length: 50)
         public string Address { get; set; } // Address (length: 2147483647)
         public int Id { get; set; } // ID (Primary key)
+
     }
 
 }

@@ -1,4 +1,4 @@
-﻿@model MVCRegistrationform.RegistrationDetail
+﻿@model MVCRegistrationform.ViewModel.RegDetailsViewModel
 
 @{
     ViewBag.Title = "RegistrationDetails";
@@ -6,30 +6,36 @@
 <link href="~/StyleSheet/TableStyle.css" rel="stylesheet" />
 
 <h2>RegistrationDetails</h2>
-    <table class="TFtable">
+<table class="TFtable">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (var item in Model.Details)
+    {
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Delete</th>
-            <th>Edit</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-         <tr>
-            <td>@item.Name</td>
+            <td>@Html.DisplayFor(model => item.Name)</td>
+            <td>@Html.DisplayFor(model => item.Email)</td>
+            <td>@Html.DisplayFor(model => item.Phone)</td>
+            <td>@Html.DisplayFor(model => item.Address)</td>
+            <td>@Html.ActionLink("Delete", "DeleteDetails", new { id = @item.Id })</td>
+            <td>@Html.ActionLink("Edit", "EditDetails", new { id = @item.Id })</td>
+
+            @* <td>@item.Name</td>
              <td>@item.Email</td>
              <td>@item.Phone</td>
-             <td>@item.Address</td>
-             <td>@Html.ActionLink("Delete","DeleteDetails",new {id =@item.ID})</td>
-             <td>@Html.ActionLink("Edit", "EditDetails", new { id=@item.ID})</td>
+             <td>@item.Address</td>*@
+            
         </tr>   
-        }
-       
-        
-    </table>
+    }
+
+
+</table>
 <div class="align">
-    @Html.ActionLink("Click to add new Details","RegistrationForm")
+    @Html.ActionLink("Click to add new Details", "RegistrationForm")
 </div>
 

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCRegistrationform.Filters;
 using System.Web.Security;
+using MVCRegistrationform.ViewModel;
 
 namespace MVCRegistrationform.Controllers
 {
@@ -48,28 +49,30 @@ namespace MVCRegistrationform.Controllers
             SalesERPContext.SaveChanges();
             return RedirectToAction("RegistrationDetails");
         }
-       // [DebugFilterAttribute]
+        // [DebugFilterAttribute]
         public ActionResult RegistrationDetails()
         {
 
             // Logic to display the entire list of objects pulled from database through entity framework. 
-             var Data = SalesERPContext.RegistrationDetails.ToList();
-             //ViewBag.UserDetails = Data;
-             return View(SalesERPContext);
+            //var Data = SalesERPContext.RegistrationDetails;
+            RegDetailsViewModel obj = new RegDetailsViewModel();
+            obj.Details = SalesERPContext.RegistrationDetails.ToList();
+            //ViewBag.UserDetails = Data;
+            return View("RegistrationDetails", obj);
         }
-        
+
         public ActionResult DeleteDetails(int id)
         {
-            //var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.ID == id select s1).FirstOrDefault();
-            //SalesERPContext.RegistrationDetails.Remove(DeleteDetails);
-            //SalesERPContext.SaveChanges();
+            var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.Id== id select s1).FirstOrDefault();
+            SalesERPContext.RegistrationDetails.Remove(DeleteDetails);
+            SalesERPContext.SaveChanges();
             return RedirectToAction("RegistrationDetails");
 
         }
         public ActionResult EditDetails(int id)
         {
-            //var std = SalesERPContext.RegistrationDetails.Find(id);
-            var std = 1;
+            var std = SalesERPContext.RegistrationDetails.Find(id);
+            //var std = 1;
             return View("EditDetails", std);
         }
         [HttpPost]
@@ -93,41 +96,41 @@ namespace MVCRegistrationform.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel login, string returnUrl,string command)
+        public ActionResult Login(LoginModel login, string returnUrl, string command)
         {
-           
-                if (command == "Login")
-                {
-                    if(login.UserName!=null && login.Password!=null)
-                    {
-                        if (ModelState.IsValidField(login.UserName) && ModelState.IsValidField(login.Password))
-                        {
 
-                            //var isMember = Membership.ValidateUser(login.UserName, login.Password);
-                            //if (isMember)
-                            //{
-                            //    FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
-                            //    Response.Redirect(Request.RawUrl);
-                            //}        
-                            //else
-                            //{
-                            //    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                            //}
-                            var v = SalesERPContext.Logins.Where(a => a.UserName.Equals(login.UserName) && a.Password.Equals(login.Password)).FirstOrDefault();
-                            if (v != null)
-                            {
-                                FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
-                                Session["LogedUserID"] = v.UserName.ToString();
-                                Session["LogedUserFullname"] = v.Password.ToString();
-                                return RedirectToAction("RegistrationDetails", "Registration");
-                            }
-                            else
-                            {
-                                ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                                return View(login);
-                            }
-                        } 
-                    
+            if (command == "Login")
+            {
+                if (login.UserName != null && login.Password != null)
+                {
+                    if (ModelState.IsValidField(login.UserName) && ModelState.IsValidField(login.Password))
+                    {
+
+                        //var isMember = Membership.ValidateUser(login.UserName, login.Password);
+                        //if (isMember)
+                        //{
+                        //    FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
+                        //    Response.Redirect(Request.RawUrl);
+                        //}        
+                        //else
+                        //{
+                        //    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                        //}
+                        var v = SalesERPContext.Logins.Where(a => a.UserName.Equals(login.UserName) && a.Password.Equals(login.Password)).FirstOrDefault();
+                        if (v != null)
+                        {
+                            FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
+                            Session["LogedUserID"] = v.UserName.ToString();
+                            Session["LogedUserFullname"] = v.Password.ToString();
+                            return RedirectToAction("RegistrationDetails", "Registration");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                            return View(login);
+                        }
+                    }
+
 
                 }
                 else if (command == "SignUp")
@@ -145,11 +148,11 @@ namespace MVCRegistrationform.Controllers
                     }
 
                 }
-                
+
             }
             return View(login);
-            
-                
+
+
         }
         public ActionResult LogOut()
         {
@@ -157,7 +160,7 @@ namespace MVCRegistrationform.Controllers
             Session.Abandon(); // it will clear the session at the end of request
             //TempData["LogoutMessage"] = "You are now successful loged out.";
             return RedirectToAction("Login");
-            
+
         }
         //ViewTemplatates
         public ActionResult ViewLoginDetails(int id)
