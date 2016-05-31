@@ -16,7 +16,7 @@ namespace MVCRegistrationform.Controllers
     [RoutePrefix("Registration")]
     public class RegistrationController : Controller
     {
-        private SalesERPContext SalesERPContext;
+        public SalesERPContext SalesERPContext;
 
         public RegistrationController()
         {
@@ -40,14 +40,13 @@ namespace MVCRegistrationform.Controllers
         {
             if (!ModelState.IsValid)
                 return View();
-
             RegistrationDetail Details = new RegistrationDetail();
             Mapper.CreateMap<RegModel, RegistrationDetail>();
             Mapper.Map(model, Details);
             SalesERPContext.RegistrationDetails.Add(Details);
 
-            SalesERPContext.SaveChanges();
-            return RedirectToAction("RegistrationDetails");
+            int result = SalesERPContext.SaveChanges();
+            return RedirectToAction("RegistrationDetails", new { result = result });
         }
         // [DebugFilterAttribute]
         public ActionResult RegistrationDetails()
@@ -63,7 +62,7 @@ namespace MVCRegistrationform.Controllers
 
         public ActionResult DeleteDetails(int id)
         {
-            var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.Id== id select s1).FirstOrDefault();
+            var DeleteDetails = (from s1 in SalesERPContext.RegistrationDetails where s1.Id == id select s1).FirstOrDefault();
             SalesERPContext.RegistrationDetails.Remove(DeleteDetails);
             SalesERPContext.SaveChanges();
             return RedirectToAction("RegistrationDetails");
@@ -96,11 +95,11 @@ namespace MVCRegistrationform.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel login, string returnUrl, string command)
+        public ActionResult Login(LoginModel login)
         {
 
-            if (command == "Login")
-            {
+           // if (command == "Login")
+            //{
                 if (login.UserName != null && login.Password != null)
                 {
                     if (ModelState.IsValidField(login.UserName) && ModelState.IsValidField(login.Password))
@@ -133,23 +132,23 @@ namespace MVCRegistrationform.Controllers
 
 
                 }
-                else if (command == "SignUp")
-                {
-                    if (ModelState.IsValid)
-                    {
-                        Login Register = new Login();
+                //else if (command == "SignUp")
+                //{
+                //    if (ModelState.IsValid)
+                //    {
+                //        Login Register = new Login();
 
-                        Mapper.CreateMap<LoginModel, Login>();
-                        Mapper.Map(login, Register);
-                        SalesERPContext.Logins.Add(Register);
+                //        Mapper.CreateMap<LoginModel, Login>();
+                //        Mapper.Map(login, Register);
+                //        SalesERPContext.Logins.Add(Register);
 
-                        SalesERPContext.SaveChanges();
-                        return RedirectToAction("RegistrationDetails");
-                    }
+                //        SalesERPContext.SaveChanges();
+                //        return RedirectToAction("RegistrationDetails");
+                //    }
 
-                }
+                //}
 
-            }
+            //}
             return View(login);
 
 
