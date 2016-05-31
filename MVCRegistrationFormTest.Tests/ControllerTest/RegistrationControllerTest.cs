@@ -5,6 +5,7 @@ using MVCRegistrationform.Controllers;
 using Moq;
 using MVCRegistrationform.Models;
 using System.Collections;
+using MVCRegistrationform;
 
 namespace MVCRegistrationForm.Tests.ControllerTest
 {
@@ -22,14 +23,14 @@ namespace MVCRegistrationForm.Tests.ControllerTest
             Assert.IsNotNull(Actual);
             Assert.AreEqual("RegistrationForm", Actual.ViewName);
         }
-        [TestMethod]
-        public void DeleteDetailsRedirectTest()
-        {
-            var actual = controller.DeleteDetails(1) as RedirectToRouteResult;
-            Assert.AreEqual("RegistrationDetails", actual.RouteValues["action"]);
-            //Assert.AreEqual("Registration", actual.RouteName["Controller"]);
+        //[TestMethod]
+        //public void DeleteDetailsRedirectTest()
+        //{
+        //    var actual = controller.DeleteDetails(1) as RedirectToRouteResult;
+        //    Assert.AreEqual("RegistrationDetails", actual.RouteValues["action"]);
+        //    //Assert.AreEqual("Registration", actual.RouteName["Controller"]);
 
-        }
+        //}
        // [TestMethod]
         //public void EditDetailsTest()
         //{
@@ -48,6 +49,9 @@ namespace MVCRegistrationForm.Tests.ControllerTest
             model.Phone = "9980795757";
            // arr.Add("");
           RegistrationController controller = new RegistrationController();
+          Mock<SalesERPContext> mocke = new Mock<SalesERPContext>();
+          mocke.SetupSequence(p => p.RegistrationDetails).Returns(null);
+
           controller.RegistrationForm(model);
  
         }
